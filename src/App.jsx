@@ -1,18 +1,17 @@
-import React from "react";
-import { Box } from "./styled";
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <React.Fragment>
-        <Box type="sm">Hello React</Box>
-        <Box type="md">Hello React</Box>
-        <Box type="lg">Hello React</Box>
-      </React.Fragment>
-    );
-  }
+import { useState, useContext } from "react";
+import { StudentContext } from ".";
+export function MyApp() {
+  let [count, setCount] = useState(0);
+  const data = useContext(StudentContext);
+  return (
+    <div>
+      <h1>Welcome to my app {count}</h1>
+      <p>{data}</p>
+      <button onClick={() => setCount(count + 1)}>Add</button>
+      <button onClick={() => setCount(count - 1)} style={{ margin: "20px" }}>
+        Remove
+      </button>
+    </div>
+  );
 }
-export default App;
+export default MyApp;
